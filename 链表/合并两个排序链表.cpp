@@ -108,3 +108,52 @@ public:
         return pNode;
     }
 };
+
+class Solution {
+public:
+     ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
+    {
+         if(!pHead1) return pHead2;
+         if(!pHead2) return pHead1;
+         ListNode *pNode,*pHead;
+        //先建立头结点
+         if(pHead1->val<=pHead2->val){
+             //pHead=pHead1;
+             pHead=new ListNode(pHead1->val);
+             pHead1=pHead1->next;
+         }else{
+             //pHead=pHead2;
+             pHead=new ListNode(pHead2->val);
+             pHead2=pHead2->next;
+         }
+         pNode=pHead;
+         while(pHead1!=NULL&&pHead2!=NULL){
+             if(pHead1->val<=pHead2->val){
+                 //pNode->next=pHead1;
+                 pNode->next=new ListNode(pHead1->val);
+                 pNode=pNode->next;
+                 pHead1=pHead1->next;
+         }else{
+                 //pNode->next=pHead2;
+                 pNode->next=new ListNode(pHead2->val);
+                 pNode=pNode->next;
+                 pHead2=pHead2->next;
+             }
+         }
+         //检查是否还有漏下的
+         while(pHead1!=NULL){
+             //pNode->next=pHead1;
+             pNode->next=new ListNode(pHead1->val);
+             pNode=pNode->next;
+             pHead1=pHead1->next;
+         }
+         while(pHead2!=NULL){
+             //pNode->next=pHead2;
+             pNode->next=new ListNode(pHead2->val);
+             pNode=pNode->next;
+             pHead2=pHead2->next;
+         }
+         return pHead;
+    }
+};
+

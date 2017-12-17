@@ -5,7 +5,7 @@ public:
         ListNode *pCur=pHead,*pPrev=NULL,*pNext=pHead->next;
         while(pCur!=NULL){
             pNext=pCur->next;
-            pCur->next=pPrev;
+            pCur->next=pPrev;//不改变指向，只改变值
             pPrev=pCur;
             pCur=pNext;
         }
